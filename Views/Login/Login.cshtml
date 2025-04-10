@@ -1,0 +1,23 @@
+﻿@model TechPulse.Models.LoginModel
+
+<form method="post">
+    <div class="form-group">
+        <label for="Username">Användarnamn:</label>
+        <input type="text" id="Username" name="Username" class="form-control" value="@Model.Username" />
+        @if (!string.IsNullOrEmpty(Model.Username))
+        {
+            <div class="text-danger">
+                @TempData["Message"]
+            </div>
+        }
+    </div>
+
+    <div class="form-group">
+        <label for="Password">Lösenord:</label>
+        <input type="password" id="Password" name="Password" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Logga in</button>
+    </div>
+</form>
