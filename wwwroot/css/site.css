@@ -22,6 +22,8 @@ body {
     transition: background-color 0.3s ease, color .3s ease;
     background-color: var(--background-color);
     color: var(--text-color);
+    min-height: 100vh;
+    margin: 0;
 }
 
     body.dark-mode {
@@ -67,11 +69,11 @@ body {
     }
 
 .footer {
+    display: flex;
     justify-content: center;
-    align-items: end;
-    color: #333;
-    transition: all .3s;
+    align-items: center;
 }
+
 
 #search {
     display: flex;

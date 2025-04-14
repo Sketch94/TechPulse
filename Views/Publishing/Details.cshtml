@@ -1,0 +1,35 @@
+@model TechPulse.Models.Article
+
+<div class="container mt-4">
+    <h2>@Model.Title</h2>
+
+    <div class="text-muted mb-3">
+        <small>
+            Publicerad av @Model.AuthorId den @Model.CreatedAt.ToLocalTime().ToString("d MMMM yyyy")
+            @if (Model.UpdatedAt.HasValue)
+            {
+                <span>(Uppdaterad: @Model.UpdatedAt.Value.ToLocalTime().ToString("d MMMM yyyy"))</span>
+            }
+        </small>
+    </div>
+
+    <div class="mb-3">
+        <span class="badge bg-primary">@Model.Category</span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.FeaturedImage))
+    {
+        <div class="mb-4">
+            <img src="@Model.FeaturedImage" class="img-fluid" alt="@Model.Title" />
+        </div>
+    }
+
+    <div class="article-content">
+        @Html.Raw(Model.Content)
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Redigera</a>
+        <a asp-action="Index" class="btn btn-secondary">Tillbaka till listan</a>
+    </div>
+</div> 

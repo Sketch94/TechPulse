@@ -25,6 +25,12 @@ namespace TechPulse.Controllers
             return View();
         }
 
+        public IActionResult Publishish()
+        {
+            ViewBag.Title = "Publish";
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -16,7 +16,7 @@ namespace TechPulse.Controllers
         }
         public ActionResult Profile()
         {
-            var username = User?.Identity?.Username;
+            var username = User?.Identity?.Name;
             var user = _context.Users.FirstOrDefault(u => u.Username == username);
 
             if (user == null)

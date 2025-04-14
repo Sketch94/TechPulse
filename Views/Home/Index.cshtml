@@ -2,8 +2,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <body>
-    <h1 class="text-center mb-2 mt-5">Välkommen till Tech<span class="pulse-text">Pulse</span></h1>
+
+    <div class="search-container p-3 mt-5 text-center">
+        <div class="search-field">
+            <label for="search" class="visually-hidden">Sök efter produkter:</label>
+            <input type="text" id="search" placeholder="Sök efter produkt..." class="rounded-4 p-2" />
+        </div>
+    </div>
+    <h1 class="text-center mb-2 mt-4">Välkommen till Tech<span class="pulse-text">Pulse</span></h1>
     <p id="tech-text" class="text-center">Din allt-i-ett-butiks lösning för allt inom teknik!</p>
+
     <div class="img-wrapper mt-5 text-center">
         <img src="~/icons/globe.png" class="tech-icon" alt="Purple Globe" id="globeIcon" width="300" height="300" />
     </div>

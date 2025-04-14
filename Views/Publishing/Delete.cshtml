@@ -1,0 +1,33 @@
+@model TechPulse.Models.Article
+
+<div class="container mt-4">
+    <h2>Ta bort artikel</h2>
+
+    <div class="alert alert-warning">
+        <h4>Är du säker på att du vill ta bort denna artikel?</h4>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <p class="text-muted">
+                <small>
+                    Publicerad av @Model.AuthorId den @Model.CreatedAt.ToLocalTime().ToString("d MMMM yyyy")
+                    @if (Model.UpdatedAt.HasValue)
+                    {
+                        <span>(Uppdaterad: @Model.UpdatedAt.Value.ToLocalTime().ToString("d MMMM yyyy"))</span>
+                    }
+                </small>
+            </p>
+            <p class="mb-2">
+                <span class="badge bg-primary">@Model.Category</span>
+            </p>
+        </div>
+    </div>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Ja, ta bort</button>
+        <a asp-action="Index" class="btn btn-secondary">Avbryt</a>
+    </form>
+</div> 

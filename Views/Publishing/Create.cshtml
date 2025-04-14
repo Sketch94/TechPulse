@@ -1,0 +1,64 @@
+@model TechPulse.Models.Article
+
+<div class="container mt-4">
+    <h2>Skapa ny artikel</h2>
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <partial name="_ValidationScriptsPartial" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Title" class="control-label">Titel</label>
+            <input asp-for="Title" class="form-control" placeholder="Ange titel" required />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Category" class="control-label">Kategori</label>
+            <select asp-for="Category" class="form-control">
+                <option value="Tech News">Tekniknyheter</option>
+                <option value="Reviews">Recensioner</option>
+                <option value="Tutorials">Handledningar</option>
+                <option value="Opinion">Åsikter</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Content" class="control-label">Innehåll</label>
+            <textarea asp-for="Content" class="form-control rich-editor" rows="10" placeholder="Skriv din artikel här..."></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FeaturedImage" class="control-label">Utvald bild</label>
+            <input type="file" class="form-control" name="imageFile" accept="image/*" />
+            <span class="text-muted">Max filstorlek: 2MB. Tillåtna format: jpg, jpeg, png, gif</span>
+        </div>
+
+        <div class="form-group mt-3">
+            <input type="submit" value="Publicera" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary">Tillbaka till listan</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: '.rich-editor',
+            plugins: 'link image code',
+            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | link image | code',
+            language: 'sv_SE'
+        });
+
+        // Add client-side file validation
+        document.querySelector('form').addEventListener('submit', function (e) {
+            const fileInput = document.querySelector('input[name="imageFile"]');
+            if (fileInput.files.length > 0 && fileInput.files[0].size > 2 * 1024 * 1024) {
+                e.preventDefault();
+                alert('Filen är för stor. Max 2MB tillåts.');
+            }
+        });
+    </script>
+} 

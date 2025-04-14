@@ -18,7 +18,7 @@
                     <h5 class="modal-title text-center" id="loginModalLabel">Logga in</h5>
                 </div>
                 <div class="modal-body">
-                    <form method="post" asp-page="/Login"  id="loginForm">
+                    <form method="post" asp-page="/Login" id="loginForm">
                         <div class="form-group">
                             <label for="Username">Användarnamn:</label>
                             <input type="text" id="Username" name="Username" class="form-control" />
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="form-loginBtn">
-                            <a href="@Url.Action("Index", "Login")" class="btn btn-primary">Logga in</a>
+                            <button type="submit" class="rounded-3 p-2">Logga in</button>
                         </div>
 
                         <div class="modal-account mt-3">
@@ -73,14 +73,13 @@
                         <div class="otp-container d-flex flex-column align-items-center gap-2">
                             <small id="codeNotFinishedError" class="text-danger mt-2" style="display: none;">Du måste fylla i alla fält.</small>
                             <div id="otp-container" class="d-flex justify-content-center gap-2 mt-3"></div>
-                            <button id="verifyCodeBtn" class="btn shadow-none mt-3" onclick="verifyBtnEnabled()" disabled>Bekräfta kod</button>
+                            <button id="verifyCodeBtn" class="btn shadow-none mt-3" type="submit" onclick="verifyBtnEnabled()" disabled>Bekräfta kod</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 
 
     <header>
@@ -93,7 +92,7 @@
                 </button>
 
                 @{
-                    var isLoggedIn = Context.Session.GetString("IsLoggedIn") == "true"; // Eller kontrollera användarens status på annat sätt
+                    var isLoggedIn = Context.Session.GetString("IsLoggedIn") == "true";
                     var profileImageUrl = isLoggedIn ?
                     (Context.Session.GetString("ProfileImageUrl") ?? Url.Content("~/images/default-profile.jpg")) :
                     Url.Content("~/images/default-profile.jpg");
@@ -118,8 +117,9 @@
                             <a class="nav-link icon-link-hover" href="@Url.Action("Index", "Home")">Start</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link icon-link-hover" href="@Url.Action("Privacy", "Home")">Privacy</a>
+                            <a class="nav-link icon-link-hover" asp-controller="/Publishing">Forum</a>
                         </li>
+
                     </ul>
                 </div>
 
@@ -143,16 +143,9 @@
 
             </div>
         </nav>
-        <div class="search-container p-3 mt-5 text-center">
-            <div class="search-field">
-                <label for="search" class="visually-hidden">Sök efter produkter:</label>
-                <input type="text" id="search" placeholder="Sök efter produkt..." class="rounded-4 p-2" />
-            </div>
-        </div>
     </header>
 
-
-    <footer class="footer box-shadow text-center mt-auto d-flex">
+    <footer class="footer box-shadow text-center">
         <span class="copyright-text">
             &copy; 2025 - TechPulse.
         </span>
