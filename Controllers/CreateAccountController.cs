@@ -56,7 +56,7 @@ namespace TechPulse.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Username,Email,Password,ProfileImageUrl,PhoneNumber,Address,PostalCode,City")] User user, IFormFile profileImage)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                if(profileImage != null && profileImage.Length > 0)
                 {

@@ -9,6 +9,7 @@
   <ItemGroup>
     <Content Remove="wwwroot\icons\globe.png" />
     <Content Remove="wwwroot\icons\moon.svg" />
+    <Content Remove="wwwroot\icons\password_reset.png" />
     <Content Remove="wwwroot\icons\placeholder.png" />
     <Content Remove="wwwroot\icons\profile.png" />
     <Content Remove="wwwroot\icons\search.svg" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <Resource Include="wwwroot\icons\globe.png" />
     <Resource Include="wwwroot\icons\moon.svg" />
+    <Resource Include="wwwroot\icons\password_reset.png" />
     <Resource Include="wwwroot\icons\placeholder.png" />
     <Resource Include="wwwroot\icons\search.svg" />
     <Resource Include="wwwroot\icons\sun.svg" />

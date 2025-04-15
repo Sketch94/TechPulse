@@ -1,0 +1,41 @@
+﻿@model TechPulse.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="/icons/password_reset.png" rel="icon" type="image/x-icon" />
+    <title>Glömt lösenord</title>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+</head>
+
+<body class="m-3">
+    <div>
+        <h2>Glömt lösenord</h2>
+        @Html.AntiForgeryToken()
+
+        <form asp-controller="ForgottenPassword" asp-action="Index" method="post">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Ange din e-postadress</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-outline-primary mt-3">Återställ lösenord</button>
+
+        </form>
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-info mt-3">
+                @ViewBag.Message
+            </div>
+        }
+    </div>
+
+</body>
+</html>

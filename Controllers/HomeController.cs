@@ -25,7 +25,7 @@ namespace TechPulse.Controllers
             return View();
         }
 
-        public IActionResult Publishish()
+        public IActionResult Publish()
         {
             ViewBag.Title = "Publish";
             return View();

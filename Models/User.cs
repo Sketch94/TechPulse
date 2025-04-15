@@ -44,7 +44,11 @@ namespace TechPulse.Models
         [Required(ErrorMessage = "Du måste fylla i fältet.")]
         [DisplayName("Stad")]
         public string? City { get; set; } // City of the user
-       
+
+        public string? PasswordResetToken { get; set; }
+        public DateTime? ResetTokenCreated { get; set; }
+
+
         public List<PurchaseHistory>? PurchaseHistories { get; set; } // List of purchase histories associated with the user
     }
 }
