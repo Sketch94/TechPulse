@@ -1,0 +1,32 @@
+﻿@model TechPulse.Models.ForumThread
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h2>@Model.Title</h2>
+<p>@Model.Content</p>
+<p><small>Skapad av: @Model.User.Username • @Model.CreatedAt.ToShortDateString()</small></p>
+
+<hr />
+
+<h4>Svar</h4>
+@foreach (var reply in Model.Replies)
+{
+    <div class="border p-2 mb-2">
+        <p>@reply.Content</p>
+        <small>Av: @reply.User.Username • @reply.CreatedAt.ToShortDateString()</small>
+    </div>
+}
+
+<hr />
+
+<h4>Svara på tråden</h4>
+
+<form asp-action="Reply" method="post">
+    <input type="hidden" name="threadId" value="@Model.Id" />
+    <div class="form-group">
+        <textarea name="content" class="form-control" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Skicka svar</button>
+</form>

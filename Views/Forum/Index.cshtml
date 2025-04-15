@@ -1,0 +1,19 @@
+﻿@model List<TechPulse.Models.ForumThread>
+
+@{
+    ViewData["Title"] = "Forum";
+}
+
+<h2>Forumtrådar</h2>
+
+<a class="btn btn-primary" asp-action="Create">+ Ny tråd</a>
+
+<ul class="list-group mt-3">
+    @foreach (var thread in Model)
+    {
+        <li class="list-group-item">
+            <a asp-action="Thread" asp-route-id="@thread.Id">@thread.Title</a>
+            <div><small>Skapad av: @thread.User.Username • @thread.CreatedAt.ToShortDateString()</small></div>
+        </li>
+    }
+</ul>
